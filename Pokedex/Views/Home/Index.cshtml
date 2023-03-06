@@ -3,6 +3,11 @@
     ViewData["Title"] = "Home";
     // Layout = null;
     List<Tipo> tipos = ViewBag.Tipos;
+    string Cor(string nomeTipo)
+    {
+        Tipo tipo = tipos.Where(t => t.Nome.Equals(nomeTipo)).FirstOrDefault();
+        return tipo.Cor;
+    }
 }
 
 <section class="pt-5 pb-3 text-center container">
@@ -42,7 +47,7 @@
                                 <div class="btn-group">
                                     @foreach (var tipo in pokemon.Tipo)
                                     {
-                                        <a href="#" class="btn my-2 text-white bg-dark">@tipo</a>
+                                        <a href="#" class="btn my-2 text-white" style="background-color:@Cor(tipo)">@tipo</a>
                                     }
                                 </div>
                             </div>
